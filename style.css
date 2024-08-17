@@ -68,20 +68,10 @@ h1 {
     transform: translateX(-50%);
     width: 500px;
     transition: bottom 1s ease-in-out; /* Animation speed */
-    animation: moveUp 1.5s ease-in-out forwards;
 }
 
 .logo-subtitle {
     animation-delay: 0.1s; /* Delay time */
-}
-
-@keyframes header-fade-out {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
 }
 
 @keyframes moveUp {
@@ -90,6 +80,15 @@ h1 {
     }
     to {
         bottom: 20%; /* Move to the top of the black box */
+    }
+}
+
+@keyframes header-fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 
