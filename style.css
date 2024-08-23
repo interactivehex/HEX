@@ -35,6 +35,20 @@ h1 {
     text-transform: uppercase;
     padding: 20px;
     margin-left: 30px;
+    animation: h1-in 1s ease;
+    animation-timeline: view();
+    animation-range: entry 0% cover 80%;
+}
+
+@keyframes h1-in {
+    from {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
 
 /* header */
@@ -61,20 +75,35 @@ h1 {
     z-index: 10;
 }
 
-.logo-title, .logo-subtitle {
+.logo-title {
     position: absolute;
     bottom: -50%;
     left: 50%;
     transform: translateX(-50%);
     width: 500px;
-    transition: bottom 1s ease-in-out; /* Animation speed */
+    animation: moveUp 1.5s ease-in-out forwards;
 }
 
 .logo-subtitle {
-    animation-delay: 0.1s; /* Delay time */
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    animation: moveUp2 1.5s ease-in-out forwards;
+    animation-delay: 0.15s; /* Delay time */
 }
 
 @keyframes moveUp {
+    from {
+        bottom: -50%;
+    }
+    to {
+        bottom: 20%; /* Move to the top of the black box */
+    }
+}
+
+@keyframes moveUp2 {
     from {
         bottom: -50%;
     }
@@ -100,7 +129,6 @@ h1 {
     height: auto;
     display: block;
     margin: 0 auto;
-    border-radius: 20px;
     animation: trailer-in 1s ease, trailer-out 1s ease;
     animation-timeline: view(), view();
     animation-range: entry 0% cover 75%, exit 10%;
@@ -109,11 +137,11 @@ h1 {
 @keyframes trailer-in {
     from {
         opacity: 0;
-        transform: scale(90%);
+        transform: translateY(200px);
     }
     to {
         opacity: 1;
-        transform: scale(100%);
+        transform: translateY(0px);
     }
 }
 
@@ -130,6 +158,20 @@ h1 {
 
 .center {
     margin-left: 30px;
+    animation: type-in 1s ease;
+    animation-timeline: view();
+    animation-range: entry 0% cover 80%;
+}
+
+@keyframes type-in {
+    from {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
 
 .typewriter-container {
@@ -183,81 +225,52 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
 }
 
-.services-items {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 80%;
-}
-
-.service-item {
+#services {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
     height: 60vh;
+    position: relative;
 }
 
-.service-item img {
-    width: 45%;
-    height: auto;
-    border-radius: 12px;
+.slider {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
 }
 
-.service-item .text {
-    color: #ff0000;
-    font-size: 32px;
-    font-weight: 200;
-    text-transform: uppercase;
-    width: 30%;
-    padding: 20px;
-    text-align: center;
-}
-
-.left-item {
+.slider-track {
+    display: flex;
     flex-direction: row;
-    animation: left 1s ease, item-up 1s ease;
-    animation-timeline: view(), view();
-    animation-range: entry 0% cover 75%, exit 10%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.right-item {
-    flex-direction: row-reverse;
-    animation: right 1s ease, item-up 1s ease;
-    animation-timeline: view(), view();
-    animation-range: entry 0% cover 75%, exit 10%;
+.item {
+    min-width: 30%;
+    max-width: 30%;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: 1s ease-in-out;
 }
 
-@keyframes left {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+.item.active {
+    transform: scale(1);
+    opacity: 100%;
+    filter: blur(0px);
 }
 
-@keyframes right {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-
-@keyframes item-up {
-    from {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-100px);
-    }
+.item.inactive {
+    transform: scale(0.9);
+    opacity: 60%;
+    filter: blur(3px);
 }
