@@ -219,58 +219,155 @@ h1 {
     }
 }
 
-/* services */
+/* about */
 
-#services {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    position: relative;
+.about-paragraph {
+    padding: 0 5%;
+    margin-left: 40%;
+    margin-bottom: 10vh;
+    text-wrap: balance;
+    animation: about-in 1s ease;
+    animation-timeline: view();
+    animation-range: entry 0% cover 60%;
 }
 
-#services {
+@keyframes about-in {
+    from {
+        transform: translateX(300px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+/* stats */
+
+.stats {
+    overflow: hidden;
+    color: #ff0000;
+    text-transform: uppercase;
+    padding: 0 20%;
+    left: 50%;
+    transform: translate(-50%);
+    white-space: nowrap;
+    bottom: 10%;
+    position: relative;
     display: flex;
+    text-align: center;
+    justify-content: space-around;
+    gap: 60px;
+    animation: stats-in 1s ease;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+}
+
+.stats-container {
+    display: relative;
+    display: flex;
+    justify-content: space-around;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    height: 60vh;
-    position: relative;
 }
 
-.slider {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
+span.num {
+    font-weight: 700;
+    font-size: 36px;
 }
 
-.slider-track {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+span.text {
+    font-weight: 400;
 }
 
-.item {
-    min-width: 30%;
-    max-width: 30%;
-    object-fit: contain;
-    border-radius: 10px;
-    transition: 1s ease-in-out;
+@keyframes stats-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.item.active {
-    transform: scale(1);
+/* footer */
+
+#footer {
+    text-align: center;
+    height: 100vh;
+    color: #ff0000;
+    font-weight: 400;
+    animation: footer-in 1s ease;
+    animation-timeline: view();
+    animation-range: entry 0% cover 80%;
+}
+
+#footer img {
+    width: 7.5%;
+    margin-top: 10vh;
+    margin-bottom: 15px;
+}
+
+#footer a {
+    text-decoration: none;
+    color: #ff0000;
     opacity: 100%;
-    filter: blur(0px);
+    transition: 0.5s;
 }
 
-.item.inactive {
-    transform: scale(0.9);
-    opacity: 60%;
-    filter: blur(3px);
+#footer a:hover {
+    opacity: 50%;
+    transform: scale(90%);
+}
+
+#footer i {
+    margin-top: 5vh;
+    font-size: 32px;
+    padding: 5px 20px;
+}
+
+.vertical-line {
+    border-left: 4px solid #ff0000;
+    height: 35vh;
+    transform: translateY(-275px);
+    position: absolute;
+    left: 50%;
+    margin-left: -2px;
+}
+
+#terms {
+    margin-top: 40vh;
+}
+
+@keyframes footer-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .black-box {
+        height: 35%; /* has to be the same as the animation bottom value */
+    }
+    .logo-title {
+        width: 200px;
+    }
+    .logo-subtitle {
+        width: 200px;
+    }
+    @keyframes moveUp {
+        from {
+            bottom: -50%;
+        }
+        to {
+            bottom: 35%; /* Move to the top of the black box */
+        }
+    }
+    @keyframes moveUp2 {
+        from {
+            bottom: -50%;
+        }
+        to {
+            bottom: 35%; /* Move to the top of the black box */
+        }
+    }
 }
